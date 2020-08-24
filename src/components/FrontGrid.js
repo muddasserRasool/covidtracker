@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { grey } from '@material-ui/core/colors';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginTop: 20,
+    margin: 50,
+    
 
 
   },
@@ -15,8 +17,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    backgroundColor: grey,
+    height: 140,
+
   },
+  title: {
+    color: '#3f51b5',
+    textTransform: 'uppercase'
+  }
 }));
 
 export default function FrontGrid() {
@@ -46,9 +53,9 @@ export default function FrontGrid() {
       <Grid container spacing={3}>
         {GlobalKey.map((keys, ind) => {
           return (
-            <Grid item xs={12} sm={4} key={ind}>
+            <Grid item xs={6} sm={3} key={ind}>
               <Paper className={classes.paper}>
-                <h3>{keys[0]}</h3>
+                <h3 className={classes.title}>{keys[0].replace(/_/g,' ')}</h3>
                 <h3>{keys[1]}</h3>
               </Paper>
             </Grid>
