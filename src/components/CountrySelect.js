@@ -16,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CountrySelect() {
+export default function CountrySelect({CountryCode}) {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
-  console.log(age)
+  CountryCode[1](age)
+  console.log(CountryCode)
   
 
   const handleChange = (event) => {
@@ -37,7 +38,7 @@ export default function CountrySelect() {
           onChange={handleChange}
         >
           <MenuItem value="">
-            <em>None</em>
+            <em>Global</em>
           </MenuItem>
           <MenuItem value={'PK'}>Pakistan</MenuItem>
           <MenuItem value={'SA'}>Saudi Arabia</MenuItem>

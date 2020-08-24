@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import FrontGrid from './components/FrontGrid';
 import CountrySelect from './components/CountrySelect';
 
 function App() {
+  const CountryCode = useState('')
+  console.log(CountryCode)
   return (
     <div>
       <NavBar />
-      <CountrySelect />
-      <FrontGrid />
+      <CountrySelect CountryCode={CountryCode}/>
+      <FrontGrid CountryCode={CountryCode[0]}/>
     </div>
   );
 }

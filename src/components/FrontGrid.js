@@ -26,23 +26,35 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FrontGrid() {
+export default function FrontGrid({CountryCode}) {
   const classes = useStyles();
   const [GlobalKey, setGlobalKey] = useState([]);
+  const CountryApi = "https://api.thevirustracker.com/free-api?countryTotal="+CountryCode;
 
+
+  
   useEffect(() => {
+    console.log(CountryApi)
     async function getData() {
-      let response = await fetch("https://api.thevirustracker.com/free-api?global=stats")
-      let data = await response.json()
-      console.log(data)
-      delete data.results[0].source;
-      console.log(data.results[0].total_cases)
-      setGlobalKey(Object.entries(data.results[0]))
-     
+        let GlobalFetch="https://api.thevirustracker.com/free-api?global=stats";
+        if (CountryCode === ''){
+        let response = await fetch(GlobalFetch)
+        let data = await response.json()
+        console.log(data)
+        delete data.results[0].source;
+        console.log(data.results[0].total_cases)
+        setGlobalKey(Object.entries(data.results[0]))
+        } else{
+          let response = await fetch(CountryApi)
+          let data = await response.json()
+          delete data.countrydata[0].info;
+          console.log(data)
+          setGlobalKey(Object.entries(data.countrydata[0]))
+        }
     }
-    getData()
+    getData();
+  },[CountryApi])
 
-  },[])
 
   return (
     <div className={classes.root}>
