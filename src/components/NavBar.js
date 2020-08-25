@@ -27,7 +27,7 @@ export default function NavBar() {
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
-          <Typography variant="h6" color="inherit">
+          <Typography variant="h6" color="inherit" style={{marginLeft:25}}>
             Covid-19 Tracker
           </Typography>
         </Toolbar>

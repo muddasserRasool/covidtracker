@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginTop: 20,
     margin: 50,
-    
+
 
 
   },
@@ -26,48 +26,48 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FrontGrid({CountryCode}) {
+export default function FrontGrid({ CountryCode }) {
   const classes = useStyles();
   const [GlobalKey, setGlobalKey] = useState([]);
-  const CountryApi = "https://api.thevirustracker.com/free-api?countryTotal="+CountryCode;
+  const CountryApi = "https://api.thevirustracker.com/free-api?countryTotal=" + CountryCode;
 
 
-  
+
   useEffect(() => {
     console.log(CountryApi)
     async function getData() {
-        let GlobalFetch="https://api.thevirustracker.com/free-api?global=stats";
-        if (CountryCode === ''){
+      let GlobalFetch = "https://api.thevirustracker.com/free-api?global=stats";
+      if (CountryCode === '') {
         let response = await fetch(GlobalFetch)
         let data = await response.json()
         console.log(data)
         delete data.results[0].source;
         console.log(data.results[0].total_cases)
         setGlobalKey(Object.entries(data.results[0]))
-        } else{
-          let response = await fetch(CountryApi)
-          let data = await response.json()
-          delete data.countrydata[0].info;
-          console.log(data)
-          setGlobalKey(Object.entries(data.countrydata[0]))
-        }
+      } else {
+        let response = await fetch(CountryApi)
+        let data = await response.json()
+        delete data.countrydata[0].info;
+        console.log(data)
+        setGlobalKey(Object.entries(data.countrydata[0]))
+      }
     }
     getData();
-  },[CountryApi])
+  }, [CountryApi])
 
 
   return (
     <div className={classes.root}>
 
-    {console.log(GlobalKey)}
-    
+      {console.log(GlobalKey)}
+
 
       <Grid container spacing={3}>
         {GlobalKey.map((keys, ind) => {
           return (
             <Grid item xs={6} sm={3} key={ind}>
-              <Paper className={classes.paper}>
-                <h3 className={classes.title}>{keys[0].replace(/_/g,' ')}</h3>
+              <Paper elevation={3} className={classes.paper}>
+                <h3 className={classes.title}>{keys[0].replace(/_/g, ' ')}</h3>
                 <h3>{keys[1]}</h3>
               </Paper>
             </Grid>

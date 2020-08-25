@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import FrontGrid from './components/FrontGrid';
 import CountrySelect from './components/CountrySelect';
+import Chart from './components/Chart'
 
 function App() {
   const CountryCode = useState('')
@@ -12,6 +13,7 @@ function App() {
       <NavBar />
       <CountrySelect CountryCode={CountryCode}/>
       <FrontGrid CountryCode={CountryCode[0]}/>
+      <Chart CountryCode={CountryCode[0]}/>
     </div>
   );
 }
