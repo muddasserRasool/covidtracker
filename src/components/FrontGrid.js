@@ -42,12 +42,18 @@ export default function FrontGrid({ CountryCode }) {
         let data = await response.json()
         console.log(data)
         delete data.results[0].source;
+        delete data.results[0].total_new_cases_today;
+        delete data.results[0].total_new_deaths_today;
+        delete data.results[0].total_serious_cases;
+        delete data.results[0].total_active_cases;
         console.log(data.results[0].total_cases)
         setGlobalKey(Object.entries(data.results[0]))
+
       } else {
         let response = await fetch(CountryApi)
         let data = await response.json()
         delete data.countrydata[0].info;
+        delete data.countrydata[0].total_danger_rank;
         console.log(data)
         setGlobalKey(Object.entries(data.countrydata[0]))
       }

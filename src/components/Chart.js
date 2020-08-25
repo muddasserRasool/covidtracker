@@ -43,7 +43,7 @@ export default function Chart({ CountryCode }) {
         datasets: [
             {
                 label: 'Daily New Cases',
-                backgroundColor: 'rgba(255,99,132,0.2)',
+                backgroundColor: '#3f51b5',
                 borderColor: 'rgba(255,99,132,1)',
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(255,99,132,0.4)',
@@ -57,7 +57,8 @@ export default function Chart({ CountryCode }) {
         <div className="chart" >
              
             {console.log(CoronaCases)}
-            <h2 className="NewCases" >Daily New Cases</h2>
+            <h2 className="NewCases" >Daily New Cases:</h2>
+            <hr />
             <Bar
                 data={data}
                 width={100}

@@ -11,9 +11,13 @@ function App() {
   return (
     <div>
       <NavBar />
+      <br />
+      <hr />
       <CountrySelect CountryCode={CountryCode}/>
+      <hr />
       <FrontGrid CountryCode={CountryCode[0]}/>
-      <Chart CountryCode={CountryCode[0]}/>
+      
+      <Chart CountryCode={CountryCode[0]}/> 
     </div>
   );
 }
